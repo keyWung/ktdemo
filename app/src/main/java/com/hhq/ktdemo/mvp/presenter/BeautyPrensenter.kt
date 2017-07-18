@@ -14,6 +14,7 @@ class BeautyPrensenter(context: Context, view: BeautyContract.View) : BeautyCont
 
     var mContext : Context? = null
     var mView : BeautyContract.View? = null
+    var mList = ArrayList<BeautyBean.Item>()
     val mModel :BeautyModel by lazy {
         BeautyModel()
     }
@@ -24,13 +25,16 @@ class BeautyPrensenter(context: Context, view: BeautyContract.View) : BeautyCont
     }
 
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun requestData(pageSize: String, page: String) {
-        val observable: Observable<MutableList<BeautyBean>>? = mContext?.let { mModel.loadData(mContext!!,pageSize,page) }
-        observable?.applyschedulers()?.subscribe { beans : MutableList<BeautyBean> ->
-            mView?.setData(beans)
+        val observable: Observable<BeautyBean>? = mContext?.let { mModel.loadData(mContext!!,pageSize,page) }
+        observable?.applyschedulers()?.subscribe { bean : BeautyBean ->
+            bean.results?.forEach {
+                mList.add(it)
+            }
+            mView?.setData(mList)
         }
     }
+
 }

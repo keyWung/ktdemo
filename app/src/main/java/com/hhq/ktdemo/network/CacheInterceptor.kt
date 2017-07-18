@@ -7,11 +7,6 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.CacheControl
 
-
-
-/**
- * Created by lvruheng on 2017/7/4.
- */
 class CacheInterceptor(context: Context) : Interceptor{
     val context = context
     override fun intercept(chain: Interceptor.Chain?): Response? {

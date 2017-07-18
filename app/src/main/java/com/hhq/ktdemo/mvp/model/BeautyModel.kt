@@ -10,7 +10,7 @@ import io.reactivex.Observable
  * Created by hhq on 2017/7/15 17:00
  */
 class BeautyModel(){
-    fun loadData(context: Context, pageSize: String, page: String): Observable<MutableList<BeautyBean>>? {
+    fun loadData(context: Context, pageSize: String, page: String): Observable<BeautyBean>? {
         val retrofitClient = RetrofitClient.getInstance(context, ApiService.BASE_URL)
         val apiService = retrofitClient.create(ApiService::class.java)
         return apiService?.getBeautyImg(pageSize,page)

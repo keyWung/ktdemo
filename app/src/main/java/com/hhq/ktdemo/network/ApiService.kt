@@ -16,5 +16,5 @@ interface ApiService {
 
     //获取美女图片数据
     @GET("%E7%A6%8F%E5%88%A9/{pageSize}/{page}")
-    fun getBeautyImg(@Path("pageSize") pageSize :String, @Path("page") page :String) : Observable<MutableList<BeautyBean>>
+    fun getBeautyImg(@Path("pageSize") pageSize :String, @Path("page") page :String) : Observable<BeautyBean>
 }
